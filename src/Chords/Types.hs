@@ -2,6 +2,7 @@ module Chords.Types
     ( PitchClass(..)
     , Offset(..)
     , Chord
+    , Octave
     , Voicing(..)
     , pitches
     , offsets
@@ -9,7 +10,7 @@ module Chords.Types
 
 import qualified Data.List as L
 
-data PitchClass = Ab | A | Bb | B | C | Cs | D | Eb | E | F | Fs | G deriving (Eq, Ord)
+data PitchClass = A | Bb | B | C | Cs | D | Eb | E | F | Fs | G | Ab deriving (Eq, Ord)
 data Offset = O1 | Ob2 | O2 | Ob3 | O3 | O4 | Ob5 | O5 | Os5 | O6 | Ob7 | O7 deriving (Eq, Ord)
 
 instance Show PitchClass where
@@ -26,7 +27,8 @@ instance Show PitchClass where
     show Fs = "F♯"
     show G = "G"
 
-type Chord = [PitchClass]
+type Chord = [(PitchClass, Octave)]
+type Octave = Int
 
 data Voicing = Voicing
     { vName :: String
@@ -37,7 +39,7 @@ pitches :: [PitchClass]
 pitches =
     take (2 * length pitches') $ L.cycle pitches'
   where
-    pitches' = [Ab, A, Bb, B, C, Cs, D, Eb, E, F, Fs, G]
+    pitches' = [C, Cs, D, Eb, E, F, Fs, G, Ab, A, Bb, B]
 
 offsets :: [Offset]
 offsets = [O1, Ob2, O2, Ob3, O3, O4, Ob5, O5, Os5, O6, Ob7, O7]
