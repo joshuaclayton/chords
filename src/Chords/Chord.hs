@@ -10,7 +10,7 @@ buildChord (p, v) = map (translate p) $ vOffsets v
 
 translate :: PitchClass -> Offset -> PitchClass
 translate p o =
-    maybe p ((!!) pitches) $ ((+) <$> start <*> offsetPosition)
+    maybe p (pitches !!) ((+) <$> start <*> offsetPosition)
   where
     start = L.elemIndex p pitches
     offsetPosition = L.elemIndex o offsets
