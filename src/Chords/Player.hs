@@ -12,4 +12,4 @@ playChord = void . A.mapConcurrently playPitch
 
 playPitch :: (PitchClass, Octave) -> IO ()
 playPitch (p, o) =
-    void $ P.readProcessWithExitCode "play" ["-qn", "synth", "3", "pluck", show p, "pitch", show $ o * 1200] ""
+    void $ P.readProcessWithExitCode "play" ["-qn", "synth", "1.5", "pluck", show p, "pitch", show $ o * 1200] ""
