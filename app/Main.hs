@@ -1,9 +1,9 @@
 module Main where
 
-import Chords.Types
-import Chords.Voicing
-import Chords.Chord
-import Chords.Player
+import Chords.Types (PitchClass(..))
+import Chords.Voicing (major, minor)
+import Chords.Chord (buildChord)
+import Chords.Player (playChord)
 
 main :: IO ()
 main =
